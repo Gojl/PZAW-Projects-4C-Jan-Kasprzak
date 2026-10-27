@@ -1,7 +1,11 @@
-function App(){
+interface typesProps{
+  name:String;
+}
+
+function App({name}: typesProps){
   return(
     <>
-    <h1> Filmy </h1> 
+    <h1> {name} </h1> 
     <br />
     </>
   )
