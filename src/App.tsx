@@ -1,7 +1,12 @@
-function App(){
+interface AppProps {
+  name: string;
+}
+
+
+function App({ name }: AppProps){
   return(
     <>
-    <h1> Filmy </h1> 
+    <h1> {name} </h1> 
     <br />
     </>
   )
