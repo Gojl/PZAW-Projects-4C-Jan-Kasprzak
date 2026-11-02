@@ -24,7 +24,7 @@ createRoot(document.getElementById('root')!).render(
     <br />
     <App name="Albums" />
     <div className='albums'>
-    <Album title="bunny boy problems" genere="Rap" cover="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/3f/90/3d/3f903d58-7e48-2355-ab06-e22aaf1a4a4c/26UM1IM16662.rgb.jpg/296x296bb.webp" artistName='stickxr' releseYear={2026} songs={[
+    <Album title="bunny boy problems" genere="alternatywny rap" cover="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/3f/90/3d/3f903d58-7e48-2355-ab06-e22aaf1a4a4c/26UM1IM16662.rgb.jpg/296x296bb.webp" artistName='stickxr' releseYear={2026} songs={[
       {title: "85", length: "1:28" },
       {title: "wait", length: "2:11" },
       {title: "głupia bae", length: "2:15" },
@@ -39,20 +39,19 @@ createRoot(document.getElementById('root')!).render(
       {title: "rany", length: "1:25" },
       {title: "zamykam się", length: "2:08" },
       ]} /> 
-    <Album title="bunny boy problems" genere="Rap" cover="https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/3f/90/3d/3f903d58-7e48-2355-ab06-e22aaf1a4a4c/26UM1IM16662.rgb.jpg/296x296bb.webp" artistName='stickxr' releseYear={2026} songs={[
-      {title: "85", length: "1:28" },
-      {title: "wait", length: "2:11" },
-      {title: "głupia bae", length: "2:15" },
-      {title: "payout", length: "2:42" },
-      {title: "to nie ten stan", length: "1:45" },
-      {title: "#bunnyfunny", length: "1:57" },
-      {title: "to nie te myśli", length: "2:01" },
-      {title: "fiji water angel神層", length: "2:14" },
-      {title: "bettybop", length: "1:36" },
-      {title: "go away", length: "1:59" },
-      {title: "rip stickyboi85", length: "2:07" },
-      {title: "rany", length: "1:25" },
-      {title: "zamykam się", length: "2:08" },
+    <Album title="Hustle As Usual EP" genere="alternatywny hip-hop" cover="https://t2.genius.com/unsafe/877x0/https%3A%2F%2Fimages.genius.com%2F1b855ddb5a446bfabaeac0f0b7b326ef.1000x1000x1.png" artistName='Belmondawg, Expo 200' releseYear={2020} songs={[
+      {title: "Intro", length: "0:43" },
+      {title: "CAPTCHA", length: "2:20" },
+      {title: "Te Tereny", length: "2:37" },
+      {title: "Agnihotra (skit)", length: "1:11" },
+      {title: "Followup", length: "2:33" },
+      {title: "Popp Deep (skit)", length: "0:35" },
+      {title: "Z.K.C.K", length: "1:25" },
+      {title: "Wte I Wewte", length: "3:44" },
+      {title: "Pappardelle all'arrabbiata (1988 remix)", length: "2:22" },
+      {title: "P.S.W.I.S (DJ Eprom Remix)", length: "1:56" },
+      {title: "Poppyn Universe", length: "2:25" },
+      {title: "Strona B", length: "2:27" },
       ]} /> 
       </div> 
   </StrictMode>,

@@ -9,7 +9,7 @@ export interface SongProps{
 function Song({title, length}: SongProps){
     return(
     <>
-    <p>{title} - {length}</p>
+    <p> {title} - {length}</p>
     </>
     )
 }
