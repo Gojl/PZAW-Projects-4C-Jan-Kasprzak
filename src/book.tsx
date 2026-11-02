@@ -1,4 +1,4 @@
-interface BookProps {
+export interface BookProps {
     /** Link do okładki książki */
     cover: string;
 

@@ -1,4 +1,4 @@
-interface FilmProps {
+export interface FilmProps {
   /** Tytuł filmu */
   name: string;
 
@@ -9,7 +9,7 @@ interface FilmProps {
   url: string;
 }
 
-function Film({name, year, url}: FilmProps){    
+function Film({name, year, url}: FilmProps){   
   return(
     <>
     <div className="film">
