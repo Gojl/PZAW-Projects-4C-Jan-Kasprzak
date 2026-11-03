@@ -1,7 +1,7 @@
 import Song from './song.tsx';
 import type {SongProps} from './song.tsx';
 
-interface AlbumProps{
+export interface AlbumProps{
     /**Tytuł albumu */
     title: string;
 
