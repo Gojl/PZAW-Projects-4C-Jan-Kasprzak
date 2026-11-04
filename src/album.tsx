@@ -19,9 +19,12 @@ export interface AlbumProps{
 
     /**Lista piosenek przekazywanych do Song */
     songs: SongProps[];
+
+    /** Czy album jest pusty, opcjonalna wartość */
+    emptyAlbum?: boolean;
 }
 
-function Album({title, cover, artistName, releseYear, genere, songs}: AlbumProps){
+function Album({title, cover, artistName, releseYear, genere, songs, emptyAlbum}: AlbumProps){
     return(  
     <>
     <div className='album'>
@@ -30,13 +33,14 @@ function Album({title, cover, artistName, releseYear, genere, songs}: AlbumProps
         <p>{artistName}</p>
         <p>{releseYear}</p>
         <p>{genere}</p>
+        {emptyAlbum ? <p>Album jest pusty</p> :
         <ol>
             {songs.map((song, index) =>
             <li key={index}>
             <Song title={song.title} length={song.length} />
             </li>
             )}
-        </ol>
+        </ol>}
     </div>
     </>
     )

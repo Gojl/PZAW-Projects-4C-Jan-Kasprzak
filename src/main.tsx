@@ -43,7 +43,7 @@ const albums: AlbumProps[] = [
       { title: "zamykam się", length: "2:08" },]
   },
   {
-    title: "Hustle As Usual EP", genere: "alternatywny hip-hop", cover: "https://t2.genius.com/unsafe/877x0/https%3A%2F%2Fimages.genius.com%2F1b855ddb5a446bfabaeac0f0b7b326ef.1000x1000x1.png", artistName: 'Belmondawg, Expo 200', releseYear: 2020, songs: [
+    title: "Hustle As Usual EP", genere: "alternatywny hip-hop", cover: "https://t2.genius.com/unsafe/877x0/https%3A%2F%2Fimages.genius.com%2F1b855ddb5a446bfabaeac0f0b7b326ef.1000x1000x1.png", artistName: 'Belmondawg, Expo 2000', releseYear: 2021, songs: [
       { title: "Intro", length: "0:43" },
       { title: "CAPTCHA", length: "2:20" },
       { title: "Te Tereny", length: "2:37" },
@@ -57,7 +57,9 @@ const albums: AlbumProps[] = [
       { title: "Poppyn Universe", length: "2:25" },
       { title: "Strona B", length: "2:27" },
     ]
-  }
+  },
+  {title: "Lucky best hits", genere: "trap", cover: "https://avatars.worldcubeassociation.org/uploads/user/avatar/2022KASP03/1718530163.jpg", artistName: 'Lucky', releseYear: 2027, songs: [
+      ]}
 ]
 
 
@@ -70,7 +72,7 @@ const filtredMovies = [...sortedMovies].filter((movie) => movie.year > 2010);
 /** Sortowanie książek po roku wydania */
 const sortedBooks = [...books].sort((a, b) => b.releseYear - a.releseYear);
 
-/**Slbum zawierający najwięcej utworów */
+/**Album zawierający najwięcej utworów */
 const albumMax = [...albums].reduce((a, b) => a.songs.length > b.songs.length ? a : b);
 
 createRoot(document.getElementById('root')!).render(
@@ -83,7 +85,8 @@ createRoot(document.getElementById('root')!).render(
         year={movie.year}
         url={movie.url}
         rating={movie.rating}
-      />))};
+        recomended={movie.rating >= 8.0 ? true : false}
+      />))}
     </div>
 
     <App name="Książki" />
@@ -93,7 +96,8 @@ createRoot(document.getElementById('root')!).render(
         cover={book.cover}
         releseYear={book.releseYear}
         pageNumber={book.pageNumber}
-      />))};
+        classic={book.releseYear < 2000 ? true : false}
+      />))}
     </div>
 
     <App name="Albums" />
@@ -104,8 +108,9 @@ createRoot(document.getElementById('root')!).render(
         cover={album.cover}
         artistName={album.artistName}
         releseYear={album.releseYear}
+        emptyAlbum={album.songs.length === 0 ? true : false}
         songs={album.songs}
-      />))};
+      />))}
     </div>
 
     <h1> Filmy wydane po 2010 roku </h1>
@@ -115,7 +120,8 @@ createRoot(document.getElementById('root')!).render(
         year={movie.year}
         url={movie.url}
         rating={movie.rating}
-      />))};
+        recomended={movie.rating >= 8.0 ? true : false}
+      />))}
     </div>
 
     <h1> Posortowane Książki po roku wydania </h1>
@@ -125,7 +131,8 @@ createRoot(document.getElementById('root')!).render(
         cover={book.cover}
         releseYear={book.releseYear}
         pageNumber={book.pageNumber}
-      />))};
+        classic={book.releseYear < 2000 ? true : false}
+      />))}
     </div> 
 
     <h1> Album zawierający najwięcej utworów </h1>
