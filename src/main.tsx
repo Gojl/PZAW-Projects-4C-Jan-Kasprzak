@@ -9,6 +9,9 @@ import Album from './album.tsx'
 import type { FilmProps } from './film.tsx'
 import type { BookProps } from './book.tsx'
 import type { AlbumProps } from './album.tsx'
+import Movies from './movies.tsx'
+import Books from './books.tsx'
+import Albums from './albums.tsx'
 
 /** tablica filmów pobierająca FilmProps z pliku film.tsx */
 const movies: FilmProps[] = [
@@ -19,14 +22,14 @@ const movies: FilmProps[] = [
 ]
 
 /** tablica książek pobierająca BookProps z pliku book.tsx */
-const books: BookProps[] = [
+export const books: BookProps[] = [
   { cover: "https://libris.to/media/jacket/44041660o.jpg", title: "Mikołajek", releseYear: 1960, pageNumber: 356 },
   { cover: "https://ecsmedia.pl/cir/n/mikolajek-i-inne-chlopaki-2170759171466740170/55da436262664a81bdfbc432a0683ab0.webp", title: "Mikołajek i inne chłopaki", releseYear: 1963, pageNumber: 235 },
   { cover: "https://ecsmedia.pl/cir/n/wakacje-mikolajka-ZDJECIE_OKLADKI_PRZOD_DUZY/0204/14695243131640204.webp", title: "Wakacje Mikołajka", releseYear: 1962, pageNumber: 310 },
 ]
 
 /** tablica albumów pobierająca AlbumProps z pliku album.tsx */
-const albums: AlbumProps[] = [
+export const albums: AlbumProps[] = [
   {
     title: "bunny boy problems", genere: "alternatywny rap", cover: "https://is1-ssl.mzstatic.com/image/thumb/Music211/v4/3f/90/3d/3f903d58-7e48-2355-ab06-e22aaf1a4a4c/26UM1IM16662.rgb.jpg/296x296bb.webp", artistName: 'stickxr', releseYear: 2026, songs: [
       { title: "85", length: "1:28" },
@@ -65,7 +68,7 @@ const albums: AlbumProps[] = [
 
 
 /**Sortowanie filmów po nazwie */
-const sortedMovies = [...movies].sort((a, b) => a.name.localeCompare(b.name));
+export const sortedMovies = [...movies].sort((a, b) => a.name.localeCompare(b.name));
 
 /**Filtrowanie filmów wydanych po 2010 roku */
 const filtredMovies = [...sortedMovies].filter((movie) => movie.year > 2010);
@@ -80,53 +83,11 @@ const albumMax = [...albums].reduce((a, b) => a.songs.length > b.songs.length ? 
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
 <div className="container">
-    <App name="Filmy" searchId="movie-search">
-      <div className='films row'>
-        {sortedMovies.map((movie) => (
-          <div className="col-12 col-md-6 col-lg-3" key={movie.name}>
-          <Film
-          name={movie.name}
-          year={movie.year}
-          url={movie.url}
-          rating={movie.rating}
-          recomended={movie.rating >= 8.0 ? true : false}
-        />
-        </div>))}
-      </div>
-    </App>
+    <Movies />  
+    <Books />
+    <Albums />
 
-    <App name="Książki" searchId="book-search">
-    <div className='books row'>
-      {books.map((book) => (
-        <div className="col-12 col-md-6 col-lg-3" key={book.title}>
-        <Book
-        title={book.title}
-        cover={book.cover}
-        releseYear={book.releseYear}
-        pageNumber={book.pageNumber}
-        classic={book.releseYear < 2000 ? true : false}
-      />
-      </div>))}
-    </div>
-</App>  
-    <App name="Albumy" searchId="album-search">
-    <div className='albums row'>
-      {albums.map((album) => (
-        <div className="col-12 col-md-6 col-lg-3" key={album.title}>
-          <Album
-            title={album.title}
-            genere={album.genere}
-            cover={album.cover}
-            artistName={album.artistName}
-            releseYear={album.releseYear}
-        emptyAlbum={album.songs.length === 0 ? true : false}
-        songs={album.songs}
-      />
-      </div>))}
-    </div>
-    </App>
-
-    <App name="Filmy wydane po 2010 roku" searchId="movie-search">
+    <App name="Filmy wydane po 2010 roku">
       <div className='films row'>
         {filtredMovies.map((movie) => (
           <div className="col-12 col-md-6 col-lg-3" key={movie.name}>
@@ -141,7 +102,7 @@ createRoot(document.getElementById('root')!).render(
       </div>
     </App>
 
-    <App name="Posortowane Książki po roku wydania" searchId="book-search">
+    <App name="Posortowane Książki po roku wydania">
       <div className='books row'>
         {sortedBooks.map((book) => (
           <div className="col-12 col-md-6 col-lg-3" key={book.title}>
@@ -156,7 +117,7 @@ createRoot(document.getElementById('root')!).render(
       </div> 
     </App>
 
-    <App name="Album zawierający najwięcej utworów" searchId="album-search">
+    <App name="Album zawierający najwięcej utworów">
       <div className='albums'>
           <Album
             title={albumMax.title}
