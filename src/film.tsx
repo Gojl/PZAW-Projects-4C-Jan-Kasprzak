@@ -1,3 +1,5 @@
+import 'bootstrap/dist/css/bootstrap.min.css'
+
 export interface FilmProps {
   /** Tytuł filmu */
   name: string;
@@ -18,12 +20,18 @@ export interface FilmProps {
 function Film({name, year, url, rating, recomended}: FilmProps){   
   return(
     <>
-    <div className="film">
-      <img src={url} alt={name} height={100} width={100}  />
-      <h2>{name}</h2>
-      <p>Rok produkcji: {year}</p>
-      <p>Rating: {rating}</p>
-      {recomended && <p>Polecany</p>}
+    <div className="card h-100" onClick={() => console.log(`Wybrano film: ${name}`)}>
+      <img src={url} alt={name} height={200} width={100} className="card-img-top" />
+      <div className="card-body">
+        <h2 className="card-title">{name}</h2>
+        <p className="card-text">Rok produkcji: {year}</p>
+        <button className="btn btn-primary" onClick={(event) => {
+          event.stopPropagation();
+          console.log(`Pokaż szczegóły dla ${name}`);
+        }}>Pokaż szczegóły</button>
+        <p className="card-text">Rating: {rating}</p>
+        {recomended && <p className="badge text-bg-success">Polecany</p>}
+      </div>
     </div>
     </>
   )

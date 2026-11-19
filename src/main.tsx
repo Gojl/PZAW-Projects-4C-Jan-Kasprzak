@@ -1,5 +1,6 @@
 import { StrictMode } from 'react'
 import { createRoot } from 'react-dom/client'
+import 'bootstrap/dist/css/bootstrap.min.css'
 import './index.css'
 import App from './App.tsx'
 import Film from './film.tsx'
@@ -75,76 +76,98 @@ const sortedBooks = [...books].sort((a, b) => b.releseYear - a.releseYear);
 /**Album zawierający najwięcej utworów */
 const albumMax = [...albums].reduce((a, b) => a.songs.length > b.songs.length ? a : b);
 
+
 createRoot(document.getElementById('root')!).render(
   <StrictMode>
+<div className="container">
+    <App name="Filmy" searchId="movie-search">
+      <div className='films row'>
+        {sortedMovies.map((movie) => (
+          <div className="col-12 col-md-6 col-lg-3" key={movie.name}>
+          <Film
+          name={movie.name}
+          year={movie.year}
+          url={movie.url}
+          rating={movie.rating}
+          recomended={movie.rating >= 8.0 ? true : false}
+        />
+        </div>))}
+      </div>
+    </App>
 
-    <App name="Filmy" />
-    <div className='films'>
-      {sortedMovies.map((movie) => (<Film
-        name={movie.name}
-        year={movie.year}
-        url={movie.url}
-        rating={movie.rating}
-        recomended={movie.rating >= 8.0 ? true : false}
-      />))}
-    </div>
-
-    <App name="Książki" />
-    <div className='books'>
-      {books.map((book) => (<Book
+    <App name="Książki" searchId="book-search">
+    <div className='books row'>
+      {books.map((book) => (
+        <div className="col-12 col-md-6 col-lg-3" key={book.title}>
+        <Book
         title={book.title}
         cover={book.cover}
         releseYear={book.releseYear}
         pageNumber={book.pageNumber}
         classic={book.releseYear < 2000 ? true : false}
-      />))}
+      />
+      </div>))}
     </div>
-
-    <App name="Albums" />
-    <div className='albums'>
-      {albums.map((album) => (<Album
-        title={album.title}
-        genere={album.genere}
-        cover={album.cover}
-        artistName={album.artistName}
-        releseYear={album.releseYear}
+</App>  
+    <App name="Albumy" searchId="album-search">
+    <div className='albums row'>
+      {albums.map((album) => (
+        <div className="col-12 col-md-6 col-lg-3" key={album.title}>
+          <Album
+            title={album.title}
+            genere={album.genere}
+            cover={album.cover}
+            artistName={album.artistName}
+            releseYear={album.releseYear}
         emptyAlbum={album.songs.length === 0 ? true : false}
         songs={album.songs}
-      />))}
-    </div>
-
-    <h1> Filmy wydane po 2010 roku </h1>
-    <div className='films'>
-      {filtredMovies.map((movie) => (<Film
-        name={movie.name}
-        year={movie.year}
-        url={movie.url}
-        rating={movie.rating}
-        recomended={movie.rating >= 8.0 ? true : false}
-      />))}
-    </div>
-
-    <h1> Posortowane Książki po roku wydania </h1>
-    <div className='books'>
-      {sortedBooks.map((book) => (<Book
-        title={book.title}
-        cover={book.cover}
-        releseYear={book.releseYear}
-        pageNumber={book.pageNumber}
-        classic={book.releseYear < 2000 ? true : false}
-      />))}
-    </div> 
-
-    <h1> Album zawierający najwięcej utworów </h1>
-    <div className='albums'>
-      <Album
-        title={albumMax.title}
-        genere={albumMax.genere}
-        cover={albumMax.cover}
-        artistName={albumMax.artistName}
-        releseYear={albumMax.releseYear}
-        songs={albumMax.songs}
       />
+      </div>))}
+    </div>
+    </App>
+
+    <App name="Filmy wydane po 2010 roku" searchId="movie-search">
+      <div className='films row'>
+        {filtredMovies.map((movie) => (
+          <div className="col-12 col-md-6 col-lg-3" key={movie.name}>
+            <Film
+              name={movie.name}
+              year={movie.year}
+              url={movie.url}
+              rating={movie.rating}
+          recomended={movie.rating >= 8.0 ? true : false}
+        />
+        </div>))}
+      </div>
+    </App>
+
+    <App name="Posortowane Książki po roku wydania" searchId="book-search">
+      <div className='books row'>
+        {sortedBooks.map((book) => (
+          <div className="col-12 col-md-6 col-lg-3" key={book.title}>
+            <Book
+              title={book.title}
+              cover={book.cover}
+              releseYear={book.releseYear}
+              pageNumber={book.pageNumber}
+          classic={book.releseYear < 2000 ? true : false}
+        />
+        </div>))}
+      </div> 
+    </App>
+
+    <App name="Album zawierający najwięcej utworów" searchId="album-search">
+      <div className='albums'>
+          <Album
+            title={albumMax.title}
+            genere={albumMax.genere}
+            cover={albumMax.cover}
+            artistName={albumMax.artistName}
+            releseYear={albumMax.releseYear}
+          songs={albumMax.songs}
+        />
+      </div>
+    </App>
     </div>
   </StrictMode>
 )

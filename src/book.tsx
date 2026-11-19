@@ -18,12 +18,14 @@ export interface BookProps {
 function Book({cover, title, releseYear, pageNumber, classic}: BookProps){
     return(
         <>
-        <div className="book">
-            <img src={cover} alt={title} height={100} width={100}  />
-            <h2>{title}</h2>
-            <p>Rok wydania: {releseYear}</p>
-            <p>Liczba stron: {pageNumber}</p>
-            {classic && <p>Klasyka</p>}
+        <div className="card h-100">
+            <img src={cover} alt={title} height={100} width={100} className="card-img-top" />
+            <div className="card-body">
+                <h2 className="card-title">{title}</h2>
+                <p className="card-text">Rok wydania: {releseYear}</p>
+                <p className="card-text">Liczba stron: {pageNumber}</p>
+                {classic && <p className="badge text-bg-primary">Klasyka</p>}
+            </div>
         </div>
         </>
     )
