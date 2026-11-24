@@ -1,30 +1,26 @@
-import { useState, type ReactNode } from "react";
+import Form from "./form"
+import {useState} from "react"
+import type {FormDataTypes} from "./form"
+import Card from "./Card"
 
-interface AppProps {
-  /** Nazwa do wyświetlenia */
-  name: string;
 
-  /** dziecko przekazywane do komponentu aby móc manipulować jego wyświetlaniem */
-  children?: React.ReactNode;
+
+
+export default function App(){
+
+    const [savedCharacter, setSavedCharacter] = useState<FormDataTypes|null>(null)
+
+    function createCharacter(data: FormDataTypes){ 
+        setSavedCharacter(data);
+    }
+
+    
+
+
+    return(
+        <>
+        <Form onSubmit={createCharacter}/>
+        {savedCharacter && <Card character={savedCharacter} />}
+        </>
+    );
 }
-
-
-function App({ name, children }: AppProps) {
-  const [isOpen, setIsOpen] = useState(true);
-
-  return (
-    <div className="mb-3">
-      <h1
-        onClick={() => setIsOpen((prev) => !prev)}
-      >
-        {name} {isOpen ? "▲" : "▼"}
-      </h1>
-
-      {isOpen && children}
-    </div>
-  );
-}
-
-export default App;
-
-
